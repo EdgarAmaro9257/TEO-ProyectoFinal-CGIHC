@@ -99,17 +99,12 @@ bool	animacion = false,//para el carro
 		recorrido3 = false,
 		recorrido4 = false;
 
-int estado_trici = 0,
-	estado_dogPerson = 0,
+int estado_dogPerson = 0,
 	estado_bici = 0;
 
 float movBici_z = -5.0f, // posición inicial en z
 	  movBici_x = -500.0f,	// posición inicial en x
 	  orientaBici = 0.0f;	// orientación incial
-
-float movTrici_z = -500.0f,	// posición inicial en Z
-	  movTrici_x = -175.0f,	// posición inicial en x
-	  orientaTrici = 0.0f;	// orinetación inical
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -184,8 +179,6 @@ void interpolation(void)
 void animate(void)
 {
 	giroPedales += 5.5f;
-	//movBici_z += 0.1f;
-
 
 	if (play)
 	{
@@ -219,7 +212,6 @@ void animate(void)
 			i_curr_steps++;
 		}
 	}
-
 
 	//Vehículo (se estaciona)
 	if (animacion)
@@ -448,154 +440,6 @@ void animate(void)
 
 	}
 	
-	switch (estado_trici)//para el movimiento del tamalero
-	{
-	case 0:
-		if (movTrici_z <= -250.0f){
-			orientaTrici = 0.0f;
-			movTrici_z += 0.5f;
-		}else {
-			estado_trici = 1;
-		}
-		break;
-	case 1:
-		if (movTrici_x <= 150.0f) {
-			orientaTrici = 90.0f;
-			movTrici_x += 0.5f;
-		}
-		else {
-			estado_trici = 2;
-		}
-		break;
-	case 2:
-		if (movTrici_z >= -385.0f) {
-			movTrici_z -= 0.5f;
-			orientaTrici = 180.0f;
-		}
-		else {
-			estado_trici = 3;
-		}
-		break;
-	case 3:
-		if (movTrici_x <= 490) {
-			movTrici_x += 0.5f;
-			orientaTrici = 90.0f;
-		}
-		else {
-			estado_trici = 4;
-		}
-		break;
-	case 4:
-		if (movTrici_z <= -110.0f) {
-			movTrici_z += 0.5f;
-			orientaTrici = 0.0f;
-		}
-		else {
-			estado_trici = 5;
-		}
-		break;
-	case 5:
-		if (movTrici_x >= 270.0f) {
-			movTrici_x -= 0.5f;
-			orientaTrici = 270.0f;
-		}
-		else {
-			estado_trici = 6;
-		}
-		break;
-	case 6:
-		if (movTrici_z <= 190.0f) {
-			movTrici_z += 0.5f;
-			orientaTrici = 0.0f;
-		}
-		else {
-			estado_trici = 7;
-		}
-		break;
-	case 7:
-		if (movTrici_x <= 500.0f) {
-			orientaTrici = 90.0f;
-			movTrici_x += 0.5f;
-		}
-		else {
-			estado_trici = 8;
-		}
-		break;
-	case 8:
-		if (movTrici_x >= 270.0f) {
-			orientaTrici = 270.0f;
-			movTrici_x -= 0.5f;
-		}
-		else {
-			estado_trici = 9;
-		}
-		break;
-	case 9:
-		if (movTrici_z >= -110.0f) {
-			orientaTrici = 180.0f;
-			movTrici_z -= 0.5f;
-		}
-		else {
-			estado_trici = 10;
-		}
-		break;
-	case 10:
-		if (movTrici_x <= 490.0f) {
-			orientaTrici = 90.0f;
-			movTrici_x += 0.5f;
-		}
-		else {
-			estado_trici = 11;
-		}
-		break;
-	case 11:
-		if (movTrici_z >= -385.0f) {
-			orientaTrici = 180.0f;
-			movTrici_z -= 0.5f;
-		}
-		else {
-			estado_trici = 12;
-		}
-		break;
-	case 12:
-		if (movTrici_x >= 150.0f) {
-			orientaTrici = 270.0f;
-			movTrici_x -= 0.5f;
-		}
-		else {
-			estado_trici = 13;
-		}
-		break;
-	case 13:
-		if (movTrici_z <= -250.0f) {
-			movTrici_z += 0.5f;
-			orientaTrici = 0.0f;
-		}else {
-			estado_trici = 14;
-		}
-		break;
-	case 14:
-		if (movTrici_x >= -175.0f) {
-			orientaTrici = 270.0f;
-			movTrici_x -= 0.5f;
-		}
-		else {
-			estado_trici = 15;
-		}
-		break;
-	case 15:
-		if (movTrici_z >= -500.0f) {
-			movTrici_z -= 0.5f;
-			orientaTrici = 180.0f;
-		}
-		else {
-			estado_trici = 0;
-		}
-		break;
-	default:
-		break;
-	}
-
 	switch (estado_bici)//para el movimiento de la bici
 	{
 	case 0:
@@ -811,45 +655,29 @@ int main()
 	skyboxShader.setInt("skybox", 0);
 
 	// load models
+	
+	// Modelos Estaticos
 	// -----------
-	
-	Model botaDer("resources/objects/Personaje/bota.obj");
-	Model piernaDer("resources/objects/Personaje/piernader.obj");
-	Model piernaIzq("resources/objects/Personaje/piernader.obj");
-	Model torso("resources/objects/Personaje/torso.obj");
-	Model brazoDer("resources/objects/Personaje/brazoder.obj");
-	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
-	Model cabeza("resources/objects/Personaje/cabeza.obj");
-
-	//Model carro("resources/objects/lambo/carroceria.obj");//en caso de ocuparlo tambien
-	//Model llanta("resources/objects/lambo/Wheel.obj");//llantas del lambo
-	Model casaVieja("resources/objects/casa/OldHouse.obj");
-	Model edificio("resources/objects/edificio/edificio.obj");
-	Model oxxo("resources/objects/oxxo/oxxo.obj");
-	Model entrada("resources/objects/Entrada/Entrada.obj");//entrada a la unidad
-	Model Carro("resources/objects/Bocho/Bocho.obj");//Carroceria del bocho
-	Model llanta("resources/objects/Bocho/Rueda.obj");//ruedas 
-	Model plano("resources/objects/Plano/planoVilla.obj");//plano de la unidad
+	Model oxxo("resources/objects/oxxo/oxxo.obj");				// Oxxo
+	Model entrada("resources/objects/Entrada/Entrada.obj");		//entrada a la unidad
+	Model Carro("resources/objects/Bocho/Bocho.obj");			//Carroceria del bocho
+	Model llanta("resources/objects/Bocho/Rueda.obj");			//ruedas 
+	Model plano("resources/objects/Plano/planoVilla.obj");		//plano de la unidad
 	Model edificiosVilla("resources/objects/EdificioVilla/EdificioVilla.obj");//edificios de la unidad
-	Model iglesia("resources/objects/Iglesia/iglesia.obj");//iglesia
-	Model arbusto("resources/objects/arbusto/arbusto.obj");//arbusto
-	Model pedales("resources/objects/bicicleta/pedales.obj");
-	Model cuadro("resources/objects/bicicleta/cuadro.obj");
+	Model iglesia("resources/objects/Iglesia/iglesia.obj");		//iglesia
+	Model arbusto("resources/objects/arbusto/arbusto.obj");		//arbusto
+	Model pedales("resources/objects/bicicleta/pedales.obj");	//Bici
+	Model cuadro("resources/objects/bicicleta/cuadro.obj");		
 	Model rueda("resources/objects/bicicleta/rueda.obj");
-	Model pedalesTriciclo("resources/objects/triciclo/pedalesTriciclo.obj");
-	Model triciclo("resources/objects/triciclo/triciclo2F.obj");
-	Model ruedaTriciclo("resources/objects/triciclo/ruedaTriciclo.obj");
-
-	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj");
+	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj"); //Cancha Basquetbol
 
 	
-	// Modelos dinamicos
+	// Modelos Dinamicos
 	//------------------
-	
+
 	// Dog
 	ModelAnim dog("resources/objects/Dog/doggo.dae");
 	dog.initShaders(animShader.ID);
-
 
 	// Persona Paseando
 	ModelAnim womanWalk("resources/objects/PersonaCaminando/woman.dae");
@@ -859,14 +687,11 @@ int main()
 	ModelAnim manWalk("resources/objects/PersonaCaminando2/man.dae");
 	manWalk.initShaders(animShader.ID);
 	
+	//Persona en Bici
 	ModelAnim manBici("resources/objects/bicicleta/man.dae");
 	manBici.initShaders(animShader.ID);
-	
 
-	ModelAnim manTricycle("resources/objects/triciclo/manTricycle.dae");
-	manTricycle.initShaders(animShader.ID);
-	
-	
+	//Deportista en cancha
 	ModelAnim shannon("resources/objects/Deportista/Running.dae");//cargando a SHANNON (deportista)
 	shannon.initShaders(animShader.ID);
 	
@@ -946,7 +771,7 @@ int main()
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Animaciones
+		// Animaciones (AnimShader)
 		// -------------------------------------------------------------------------------------------------------------------------
 		//Remember to activate the shader with the animation
 		animShader.use();
@@ -961,15 +786,6 @@ int main()
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
-
-		//-------------------Triciclo---------------------------------
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(movTrici_x, 1.0f, movTrici_z));
-		model = glm::scale(model, glm::vec3(0.09));
-		tmp = model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
-		model = glm::rotate(tmp, glm::radians(orientaTrici), glm::vec3(0.0f, 0.0f, 1.0f));
-		animShader.setMat4("model", model);
-		manTricycle.Draw(animShader);
-
 		//-------------------Bicicleta--------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(movBici_x, 0.0f, movBici_z));
 		model  = glm::rotate(model, glm::radians(orientaBici), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -977,7 +793,7 @@ int main()
 		animShader.setMat4("model", model);
 		manBici.Draw(animShader);
 
-		
+		//--------------------- Persona paseando perro --------------------------------
 		// DOG
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(290.0f + movDogX, 0.0f, 0.0f + movDogZ)); 
 		model = glm::scale(model, glm::vec3(0.3f));	
@@ -992,123 +808,116 @@ int main()
 		animShader.setMat4("model", model);
 		womanWalk.Draw(animShader);
 
-		// Persona Caminando
+		//--------------------- Persona caminando --------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(580.0f + movConstX, 0.0f, 120.0f + movConstZ));
 		model = glm::scale(model, glm::vec3(0.09f));
 		model = glm::rotate(model, glm::radians(OrientaConst), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		manWalk.Draw(animShader);
 
-		//Deportista
+		//--------------------- Deportista --------------------------------
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 70.0f + movShan));
 		model = glm::rotate(model, glm::radians(orienShan), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.09f));//escala
+		model = glm::scale(model, glm::vec3(0.09f));
 		animShader.setMat4("model", model);
 		shannon.Draw(animShader);
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Escenario
+		// Escenario (StaticShader)
 		// -------------------------------------------------------------------------------------------------------------------------
 		staticShader.use();
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));//proporciones de todo con un plano
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));		//proporciones de todo con un plano
 		model = glm::scale(model, glm::vec3(12.0f));
 		staticShader.setMat4("model", model);
 		plano.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-170.0f, 0.1f, -140.0f));//iglesia
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-170.0f, 0.1f, -140.0f));		//iglesia
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(22.0f));
 		staticShader.setMat4("model", model);
 		iglesia.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, 5.0f, 0.0f));//arbusto 1
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, 5.0f, 0.0f));		//arbusto 1
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
 		staticShader.setMat4("model", model);
 		arbusto.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(320.0f, 5.0f, 5.0f));//arbusto 2
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(320.0f, 5.0f, 5.0f));		//arbusto 2
 		model = glm::scale(model, glm::vec3(5.0f));
 		staticShader.setMat4("model", model);
 		arbusto.Draw(staticShader);
 		
-		
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, -75.0f));//edificio 1 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-10.0f, 0.0f, -75.0f));		//edificio 1 de villa
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(140.0f, 0.0f, 155.0f));//edificio 2 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(140.0f, 0.0f, 155.0f));		//edificio 2 de villa
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-160.0f, 0.0f, 155.0f));//edificio 3 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-160.0f, 0.0f, 155.0f));		//edificio 3 de villa
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 		
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(389.0f, 0.0f, 100.0f));//edificio 4 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(389.0f, 0.0f, 100.0f));		//edificio 4 de villa
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(320.0f, 0.0f, -245.0f));//edificio 5 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(320.0f, 0.0f, -245.0f));		//edificio 5 de villa
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 		
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(398.0f, 0.0f, -510.0f));//edificio 6 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(398.0f, 0.0f, -510.0f));		//edificio 6 de villa
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(195.0f, 0.0f, -510.0f));//edificio 7 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(195.0f, 0.0f, -510.0f));		//edificio 7 de villa
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-368.0f, 0.0f, 190.0f));//edificio 8 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-368.0f, 0.0f, 190.0f));		//edificio 8 de villa
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-368.0f, 0.0f, -70.0f));//edificio 9 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-368.0f, 0.0f, -70.0f));		//edificio 9 de villa
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.0f, -280.0f));//edificio 10 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.0f, -280.0f));		//edificio 10 de villa
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.0f, -490.0f));//edificio 11 de villa
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, 0.0f, -490.0f));		//edificio 11 de villa
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		edificiosVilla.Draw(staticShader);
 		
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, 0.0f, 70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
-		staticShader.setMat4("model", model);
-		//edificio.Draw(staticShader);
-
 		// OXXO
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(125.0f, 0.0f, -110.0f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -1129,41 +938,6 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		courtBasket.Draw(staticShader);
-
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Persona en Triciclo
-		// -------------------------------------------------------------------------------------------------------------------------
-		tmp = model = glm::translate(glm::mat4(1.0f), glm::vec3(movTrici_x, 1.0f, movTrici_z));
-		tmp = model = glm::rotate(model, glm::radians(orientaTrici), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.09f));
-		staticShader.setMat4("model", model);
-		triciclo.Draw(staticShader);
-		
-		model = glm::translate(tmp, glm::vec3(0.0f, 3.25f, -3.0f));
-		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.09f));
-		staticShader.setMat4("model", model);
-		pedalesTriciclo.Draw(staticShader);
-
-		model = glm::translate(tmp, glm::vec3(-0.45f, 4.0f, -8.5f));
-		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.09f));
-		staticShader.setMat4("model", model);
-		ruedaTriciclo.Draw(staticShader); // rueda trasera
-
-		model = glm::translate(tmp, glm::vec3(-5.0f, 4.0f, 8.0f));
-		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.09f));
-		staticShader.setMat4("model", model);
-		ruedaTriciclo.Draw(staticShader); // rueda delantera der
-
-		model = glm::translate(tmp, glm::vec3(5.0f, 4.0f, 8.0f));
-		model = model = glm::rotate(model, glm::radians(giroPedales), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.09f));
-		staticShader.setMat4("model", model);
-		ruedaTriciclo.Draw(staticShader); // rueda delantera izq
-		
-		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en bici
@@ -1192,7 +966,6 @@ int main()
 		staticShader.setMat4("model", model);
 		rueda.Draw(staticShader); // Atras
 		
-
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -1229,68 +1002,6 @@ int main()
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq trase   
 
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje
-		// -------------------------------------------------------------------------------------------------------------------------
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		tmp = model = glm::rotate(model, glm::radians(giroMonito), glm::vec3(0.0f, 1.0f, 0.0));
-		staticShader.setMat4("model", model);
-		torso.Draw(staticShader);
-
-		//Pierna Der
-		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaDer.Draw(staticShader);
-
-		//Pie Der
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);
-
-		//Pierna Izq
-		model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaIzq.Draw(staticShader);
-
-		//Pie Iz
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);	//Izq trase
-
-		//Brazo derecho
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoDer.Draw(staticShader);
-
-		//Brazo izquierdo
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoIzq.Draw(staticShader);
-
-		//Cabeza
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
-		staticShader.setMat4("model", model);
-		cabeza.Draw(staticShader);
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Caja Transparente --- Siguiente Práctica
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
-		staticShader.setMat4("model", model);
-		cubo.Draw(staticShader);
-		glEnable(GL_BLEND);*/
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
