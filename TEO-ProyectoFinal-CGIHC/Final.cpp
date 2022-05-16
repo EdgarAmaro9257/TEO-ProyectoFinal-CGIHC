@@ -941,8 +941,8 @@ int main()
 		courtBasket.Draw(staticShader);
 
 		// Cuarto 1
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-160.0f, 0.0f, 200.0f));
-		model = glm::scale(model, glm::vec3(9.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-160.0f, 0.0f, 210.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		cuarto1.Draw(staticShader);
