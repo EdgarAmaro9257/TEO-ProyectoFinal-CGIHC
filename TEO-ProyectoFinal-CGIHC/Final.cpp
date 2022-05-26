@@ -671,8 +671,8 @@ int main()
 	Model rueda("resources/objects/bicicleta/rueda.obj");
 	Model courtBasket("resources/objects/CanchaBasquet/cancha.obj"); //Cancha Basquetbol
 	Model cuarto1("resources/objects/Cuarto_1/cuarto1.obj"); //Cuarto 1
+	Model cuarto2("resources/objects/Cuarto_2/cuarto2.obj"); //Cuarto 2 
 
-	
 	// Modelos Dinamicos
 	//------------------
 
@@ -946,6 +946,13 @@ int main()
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		cuarto1.Draw(staticShader);
+
+		// Cuarto 2
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-160.0f, 0.0f, 105.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		cuarto2.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Persona en bici

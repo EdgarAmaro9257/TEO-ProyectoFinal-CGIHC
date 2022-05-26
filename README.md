@@ -1,26 +1,29 @@
 <div align="center">
- 
-# Manual de Usuario 📖
 
-## Proyecto Final Computación Gráfica E Interacción Humano-Computadora 👨🏽‍💻
+# **Manual de Usuario** 
 
-## Autor:
- - Vaquero Barajas Alexis 🤵🏽
+## Proyecto Final Computación Gráfica E Interacción Humano-Computadora 
+
+<div align="justify">
+
+### **Autor** :
+ - Vaquero Barajas Alexis 🐱‍👤
  - Cta: 316073934
+</div>
   
-### Semestre 2022-2 | Grupo 04
+#### **Semestre 2022-2 | Grupo 04**
 </div>
 
-### Requerimentos
+### **Requerimentos**
 
 * Para ejecución con Visual Studio 2019 con instalación de C++ o con el ejecutable .exe:
     - Windows 7 (Última actualización), Windows 8 (2919355), Windows 10 (version 1703 o superior)
     - Procesador: 1.8 GHz (recomendado 4 núcleos o más)
     - 2.5 GB RAM mínimo, 8 GB recomendado
-    - 20 GB en disco, recomendado
+    - 2 GB en disco, recomendado
     - Chip gráfico de mínimo 720p de resolución
 
-### Apertura y ejecución del proyecto
+### **Apertura y ejecución del proyecto**
 
 Descargar el proyecto desde GitHub dando click al boton verde "Code" y seleccionando una de las opciones
 <div align="Center">
@@ -32,7 +35,7 @@ clonado saltar hasta ["Ejecución el archivo .exe"](#item1).
 
 La selección "Download ZIP" descargará un archivo .zip del proyecto, habrá que descomprimirlo en su equipo, regresar a este manual y saltarse hasta ["Ejecución el archivo .exe"](#item1).
 
- ### Ejecución con Visual Studio 💻
+ ### ***Ejecución con Visual Studio*** 💻
  
  Si se desea y tiene instalado el IDE Visual Studio puede ejecutar la aplicación siguiendo los siguientes pasos.
  Tener descargado el proyecto de git-hub y haber descomprimdo la carpeta zip. Una vez teniendo esto abrir Visual Studio y seleccionar la opción "Abrir un proyecto o una solución"
@@ -41,7 +44,7 @@ La selección "Download ZIP" descargará un archivo .zip del proyecto, habrá qu
   <img src="img/Captura3.jpg" alt="Abrir proyecto"></img>
 <div align="justify">
  
- Buscar el archivo "Proyecto_Final.sln" dentro de la carpeta descomprimida y dar en el botón de abrir. 
+ Buscar el archivo "TEO-ProyectoFinal-CGIHC.sln" dentro de la carpeta descomprimida y dar en el botón de abrir. 
 
   <div align="Center">
   <img src="img/Captura4.jpg" alt="Abrir archivo sln"></img>
@@ -86,15 +89,16 @@ Dentro de C/C++ -> Gneral verificar que la palabra **include** se encuentra en d
 <div align="justify">
  
  <a name="item1"></a>
- ### Ejecución con archivo .exe 🚀
 
-Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\Proyecto_Final\Proyecto_Final", ubicar el archivo "Proyecto_Final.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
+ ### ***Ejecución con archivo .exe*** 🚀
+
+Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\TEO-ProyectoFinal-CGIHC\TEO-ProyectoFinal-CGIHC", ubicar el archivo "TEO-ProyectoFinal-CGIHC.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
 
 <div align="Center">
   <img src="img/Captura2.jpg" alt="Archivo executable"></img>
 <div align="justify">
  
-### Interacción con el ambiente ⛺️
+## **Interacción con el ambiente** ⛺️
 
 Una vez abierta la ventana; estando dentro del espacio virtual se captura el mouse para funcionar unicamente dentro de este, por lo que no se observa el cursos y el movimiento del mouse solo funciona dentro de la ventana. La interacción se da mediante el teclado y mouse de la computadora.
 <div align="Center">
@@ -107,12 +111,30 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
 <div align="justify">
  Modelo de la tienda Oxxo y su ubicación
  <div align="Center">
-<img src="img/Captura20.jpg" alt="Modelo de la tienda Oxxo y su ubicación"></img>
+<img src="img/Captura20.jpg" alt="Modelo de la tienda Oxxo y su ubicación"><img>
 <div align="justify">
- 
- 
-#### Funciones
-* Teclado:
+Fachada donde se ubican los cuartos.
+<div align="Center">
+<img src="img/Captura23.jpg" alt="Fachada"></img>
+<div align="justify">
+
+Cuartos dentro de la fachada.
+<div align="Center">
+<img src="img/Captura24.jpg" alt="Cuartos"></img>
+<div align="justify">
+
+Cuarto 1.
+<div align="Center">
+<img src="img/Captura21.jpeg" alt="Cuartos"></img>
+<div align="justify">
+
+Cuarto 2.
+<div align="Center">
+<img src="img/Captura22.jpeg" alt="Cuartos"></img>
+<div align="justify">
+
+### **Funciones**
+* ***Teclado***:
     * "Esc" : para salir de la ventana / terminar el programa. ❌
     
     Simulación de las teclas de adelante ⬆️, atrás ⬇️, izquierda ⬅️, derecha ➡️ para movimiento como sucede en los videojuegos
@@ -120,11 +142,9 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
     * "S" : mover la cámara hacia atrás ⬇️. 
     * "A" : mover la cámara hacia la izquierda ⬅️.
     * "D" : mover la cámara hacia la derecha ➡️.
-    
-    Musica:
-    * "Z" : incia la música :notes:.
+
  
-    Animaciones:
+    ***Animaciones***:
  
     * "SPACE" : activar o desactivar la animacion del vehiculo 🚗.
     <div align="Center">
@@ -135,12 +155,6 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
      
     <div align="Center">
       <img src="img/Captura13.jpg" alt="AnimacionCamina"></img>
-    <div align="justify">
-     
-    * La animacion del triciclo no necesita una entrada del usuario 🚲.
-     
-    <div align="Center">
-      <img src="img/Captura14.jpg" alt="AnimacionTriciclo"></img>
     <div align="justify">
      
     * La animacion de la bicicleta no necesita una entrada del usuario 🚴‍♂️.
@@ -161,6 +175,6 @@ Una vez abierta la ventana; estando dentro del espacio virtual se captura el mou
       <img src="img/Captura17.jpg" alt="AnimacionDeportista"></img>
     <div align="justify">
     
-* Movimientos del mouse:
+* **Movimientos del mouse**:
     * El deslizamiento del mouse 🔁 a la izquierda o derecha, arriba o abajo realiza el giro de la cámara 📷 en dicha dirección de deslizado, el field of view 🔍 se mueve como sucede con el cursor de la computadora.
     * Scroll del mouse reliza zoom + 🔍 moviéndolo hacia enfrente y zoom - 🔍 hacia atrás. 
