@@ -92,7 +92,7 @@ Dentro de C/C++ -> Gneral verificar que la palabra **include** se encuentra en d
 
  ### ***Ejecución con archivo .exe*** 🚀
 
-Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\TEO-ProyectoFinal-CGIHC\TEO-ProyectoFinal-CGIHC", ubicar el archivo "TEO-ProyectoFinal-CGIHC.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
+Una vez clonado el proyecto o descomprimido el ZIP: abrir la carpeta generada o ubicación del repositorio en su equipo y dirigirse a ".\TEO-ProyectoFinal-CGIHC\Ejecutable", ubicar el archivo "TEO-ProyectoFinal-CGIHC.exe" y dar doble click para abir. Lo anterior abrirá una ventana con el espacio virtual ejecutandose.
 
 <div align="Center">
   <img src="img/Captura2.jpg" alt="Archivo executable"></img>

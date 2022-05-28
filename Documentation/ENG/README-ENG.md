@@ -92,7 +92,7 @@ Inside C/C++ -> General verify that the keyword **include** is found in addition
 
  ### ***Run .exe file*** 🚀
 
-Once the project has been cloned or the ZIP has been unzipped: open the generated folder or repository location on your computer and go to ".\TEO-ProyectoFinal-CGIHC\TEO-ProyectoFinal-CGIHC", locate the file "TEO-ProyectoFinal-CGIHC. exe" and double click to open. This will open a window with the virtual space running.
+Once the project has been cloned or the ZIP has been unzipped: open the generated folder or repository location on your computer and go to ".\TEO-ProyectoFinal-CGIHC\Ejecutable", locate the file "TEO-ProyectoFinal-CGIHC. exe" and double click to open. This will open a window with the virtual space running.
 
 <div align="Center">
   <img src="img/Captura2.jpg" alt="Archivo executable"></img>
